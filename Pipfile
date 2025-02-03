@@ -10,6 +10,8 @@ argparse = "*"
 types-psycopg2 = "*"
 
 [dev-packages]
+flake8 = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.12"
