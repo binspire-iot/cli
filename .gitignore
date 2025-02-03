@@ -12,6 +12,7 @@ build/
 *.spec
 
 # Virtual Environments
+.env
 .venv/
 env/
 venv/
