@@ -21,10 +21,23 @@ class Database:
 
     def disconnect(self):
         try:
-            if self.cursor:
+            if self.cursor and self.connection:
                 self.cursor.close()
-            if self.connection:
                 self.connection.close()
-            print("Database connnection closed")
+                print("Database connnection closed")
         except Exception as e:
             print(f"Failed to close database connection: {e}")
+
+    def query(self, query, params=None):
+        if not self.cursor or not self.cursor:
+            print("No active database connection")
+            return
+
+        try:
+            self.cursor.execute(query, params)
+            if self.connection:
+                self.connection.commit()
+        except Exception as e:
+            print(f"Failed to execute query: ${e}")
+            if self.connection:
+                self.connection.rollback()
